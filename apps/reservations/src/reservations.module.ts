@@ -1,12 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ReservationsController } from './reservations.controller';
-import { ReservationsService } from './reservations.service';
+import { ReservationController } from './reservation.controller';
+import { ReservationService } from './reservation.service';
 import { DatabaseModule } from '@app/common';
 import { ReservationsRepository } from './reservations.repository';
-import {
-  Reservation,
-  ReservationSchema,
-} from './reservation/entities/reservation.schema';
+import { Reservation, ReservationSchema } from './entities/reservation.schema';
 
 @Module({
   imports: [
@@ -15,7 +12,7 @@ import {
       { name: Reservation.name, schema: ReservationSchema },
     ]),
   ],
-  controllers: [ReservationsController],
-  providers: [ReservationsService, ReservationsRepository],
+  controllers: [ReservationController],
+  providers: [ReservationService, ReservationsRepository],
 })
 export class ReservationsModule {}
